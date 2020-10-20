@@ -19,7 +19,7 @@ def home(request):
 	allPost5 = About_Content_Heading.objects.all()[::-1]
 	allPost6 = About_Three_Content.objects.all()[::-3]
 	allPost7 = About_Content_Paragraph.objects.all()[::-1]
-	allPost8 = About_Content_Top_Down.objects.all()[::-3]
+	allPost8 = About_Content_Top_Down.objects.all()
 	allPost9 = VideoSection.objects.all()[::-1]
 	allPost10 = Location.objects.all()[::-1]
 	allPost11 = Products.objects.all()[::-2]
