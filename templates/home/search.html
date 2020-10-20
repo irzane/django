@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %} Search Results
+{% endblock title %} 
+
+{% block blogactive %} active
+    
+{% endblock blogactive %}
+
+{% block Description %}Dupolx is an international Products Company based in India, that offers To Buy Products, services. Contact ...{% endblock Description %}
+
+
+{% block Keywords %}Dupolx,Products Buy , Products, Etc..{% endblock Keywords %}
+
+{% block body %}
+
+{% load static %}
+  <body>
+		
+	
+    <section style="margin-top: 0;" class="featured-places " id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <span>Search Results</span>
+                        <h2>Your Search Is :</h2>
+                    </div>
+                </div> 
+            </div> 
+            <div class="row">
+
+
+                  {% for post in allPosts %}
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="featured-item">
+                        <div class="thumb">
+                            <img src="{{post.imglink}}" alt="{{post.title}}" width="360" height="287">
+                            <div class="overlay-content">
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                            <div class="date-content">
+                                <h6>D - {{post.time.day}}</h6>
+                                <h5>M -{{post.time.month}} </h5>
+                                
+                            </div>
+                        </div>
+                        <div class="down-content">
+                            <h4>{{post.title}}</h4>
+                            <span>Indian Rupees - {{post.price}}</span>
+                            <p>{{post.content | safe | truncatechars:70}}</p>
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-button">
+                                        <a href="blog/{{post.slug}}">Continue Reading</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+{% endfor %}
+
+
+
+            </div>
+        </div>
+    </section>
+
+</body>
+{% endblock body %}

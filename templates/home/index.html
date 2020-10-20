@@ -1,0 +1,361 @@
+{% extends "base.html" %}
+   
+{% block title %} Dupolx
+    
+{% endblock title %}
+{% block homeactive %} active {% endblock homeactive %}
+
+{% block Description %}Dupolx is an international Products Company based in India, that offers To Buy Products, services. Contact ...{% endblock Description %}
+
+
+{% block Keywords %}Dupolx,Products Buy , Products, Etc..{% endblock Keywords %}
+
+{% block body %}
+
+{% load static %}
+    <section class="banner" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    
+                    {% for post in allPost1 %}
+                    <div class="banner-caption">
+                        <div class="line-dec"></div>
+                        <h2>{{post.heading}}</h2>
+                        <span>{{post.content | safe | truncatechars:100 }}</span>
+                        <div class="blue-button">
+                            <a class="scrollTo" data-scrollTo="popular" href="/blog">Discover More</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <div class="submit-form">
+
+
+                        <form id="form-submit" action="/search" method="get">
+                            <div class="row">
+                                <div class="col-md-9 first-item">
+                                    <fieldset>
+                                        <input type="text" class="form-control" name = "query" id="query" placeholder="Search Your Products.." required="">
+                                    </fieldset>
+                                </div>
+                             
+                                <div class="col-md-3">
+                                    <fieldset>
+                                        <button type="submit" id="form-submit" class="btn">Search Now</button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="popular-places" id="popular">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    {% for post in allPost2 %}
+                    <div class="section-heading">
+                        <span>{{post.title}}</span>
+                        <h2>{{post.content | safe |truncatechars:100}}</h2>
+                    </div>
+                     {% endfor %}
+                </div> 
+            </div> 
+
+            <div class="owl-carousel owl-theme">
+             {% for post in allPost3 %}      
+                <div class="item popular-item">
+                    <div class="thumb">
+                        <img src="{{post.imglink}}" alt="{{post.title}}" width="240" height="267">
+                        <div class="text-content">
+                            <h4>{{post.title}}</h4>
+                            <span>Indian Rupees : {{post.price}}</span>
+                        </div>
+                        <div class="plus-button">
+                            <a href="{{post.slug}}"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="featured-places" id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {% for post in allPost4 %}
+                        
+                    <div class="section-heading">
+                        <span>{{post.title}}</span>
+                        <h2>{{post.content | safe | truncatechars:50 }}</h2>
+                    </div>
+                    {% endfor %}
+                </div> 
+            </div> 
+            <div class="row">
+
+                 {% for post in allPost11 %}
+                    
+                
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="featured-item">
+                        <div class="thumb">
+                            <img src="{{post.imglink}}" alt="{{post.title}}" width="360" height="287">
+                            <div class="overlay-content">
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                            <div class="date-content">
+                                <h6>Price</h6>
+                                <h5>Rs. {{post.price}}</h5>
+                                
+                            </div>
+                        </div>
+                        <div class="down-content">
+                            <h4>{{post.title}}</h4>
+                            <span>Date : {{post.time}}</span>
+                            <p>{{post.content | safe | truncatechars:70}}</p>
+                            
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-button">
+                                        <a href="blog/{{post.slug}}">Continue Reading</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+{% endfor %}
+
+
+               
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="our-services" id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {% for post in allPost5 %}
+                        
+                    <div class="section-heading">
+                        <span>{{post.title}}</span>
+                        <h2>{{post.content | safe | truncatechars:50 }}</h2>
+                    </div>
+                    {% endfor %}
+
+                </div> 
+            </div> 
+
+            <div class="row">
+                {% for post in allPost6 %}
+                    
+                <div class="col-md-4">
+                    <div class="service-item">
+                        <div class="icon">
+                            <img src="{{post.img}}" alt="{{post.title}}" width ="62" height= "62">
+                        </div>
+                        <h4>{{post.title}}</h4>
+                        <p>{{post.content | safe | truncatechars:500}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+                
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="down-services">
+                        <div class="row">
+
+                            {% for post in allPost7 %}
+                                
+                            <div class="col-md-5 col-md-offset-1">
+                                <div class="left-content">
+                                    <h4>{{post.title}}</h4>
+                                    <p>{{post.content | safe | truncatechars:500}}</p>
+                                    <div class="blue-button">
+                                        <a href="/blog">Discover More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            <div class="col-md-5">
+                                <div class="accordions">
+                                    <ul class="accordion">
+                                        {% for post in allPost8 %}
+                                            
+                                        <li>
+                                            <a>{{post.title}}</a>
+                                            <p>{{post.content |safe | truncatechars:300}}</p>
+                                        </li>
+
+                                        {% endfor %}
+
+                                    </ul> <!-- / accordion -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section id="video-container">
+        {% for post in allPost9%}
+            
+        <div class="video-overlay"></div>
+        <div class="video-content">
+
+            <div class="inner">
+                <span>{{post.title}}</span>
+                <h2>{{post.content | safe | truncatechars:300}}</h2>
+                <a href="http://youtube.com" target="_blank"><i class="fa fa-play"></i></a>
+            </div>
+
+        </div>
+        <video autoplay="" loop="" muted>
+        	<source src="{% static 'video/highway-loop.mp4' %}" type="video/mp4" />
+        </video>
+
+        {% endfor %}
+    </section>
+
+
+
+
+
+    <section class="contact" id="contact">
+        <div id="map">
+        			<!-- How to change your own map point
+                           1. Go to Google Maps
+                           2. Click on your location point
+                           3. Click "Share" and choose "Embed map" tab
+                           4. Copy only URL and paste it within the src="" field below
+                    -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14003.618975546018!2d77.30054318199814!3d28.662570718493374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfb6c8845e735%3A0x369f91bcbaef413e!2sSurajmal%20Vihar%2C%20Delhi!5e0!3m2!1sen!2sin!4v1602844069161!5m2!1sen!2sin" width="100%" height="500px" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+   
+        </div>
+        <div class="container">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="wrapper">
+                  <div class="section-heading">
+                      <span>Contact Us</span>
+                      <h2>Dupolx one of the emerging platform.</h2>
+                  </div>
+                  <!-- Modal button -->
+                  <button id="modBtn" class="modal-btn">Talk to us</button>
+                </div>  
+                <div id="modal" class="modal">
+                  <!-- Modal Content -->
+                  <div class="modal-content">
+                    <div class="close fa fa-close"></div>
+                    <div class="row">
+                        <div class="col-md-8"> 
+                            <div class="left-content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="section-heading">
+                                            <span>Talk To Us</span>
+                                            <h2>Let's have a discussion</h2>
+                                        </div>
+                                    </div>
+                                    <form action="/" method="post">
+                                        {% csrf_token %}
+                                    <div class="col-md-6">
+                                      <fieldset>
+                                        <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
+                                      </fieldset>
+                                    </div>
+                                     <div class="col-md-6">
+                                      <fieldset>
+                                        <input name="subject" type="text" class="form-control" id="subject" placeholder="Subject..." required="">
+                                      </fieldset>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <fieldset>
+                                        <input name="number" type="number" class="form-control" id="number" placeholder="Number..." required="">
+                                      </fieldset>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                      <fieldset>
+                                        <input name="email" type="email" class="form-control" id="email" placeholder="Email..." required="">
+                                      </fieldset>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                      <fieldset>
+                                        <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+                                      </fieldset>
+                                    </div>
+                                    <div class="col-md-12">
+                                      <fieldset>
+                                        <button type="submit" id="form-submit" class="btn">Send Message</button>
+                                      </fieldset>
+                                    </div>
+                                     </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="right-content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="content">                                          
+                                            <div class="section-heading">
+                                                <span>More About Us</span>
+                                                <h2>Dupolx Company</h2>
+                                            </div>
+                                            <p>Dupolx one of the emerging platform to buy and sell the used items and get in touch with the owner to negotiate prices at the comfort of your homes.</p>
+                                            <ul>
+                                               <li><span>Phone:</span><a href="#">+91 9711443344</a></li>
+                                               <li><span>Email:</span><a href="#">admin@Dupolx.com</a></li>
+                                               <li><span>Address:</span><a href="#">Delhi, India</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>      
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+{% endblock body %}
