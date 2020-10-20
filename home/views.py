@@ -113,15 +113,15 @@ def login(request):
 		myuser = authenticate(username = username , password = password)
 		auth_login(request , myuser)
 		# messages.success(request , "Successfully Logged In ")
-		return redirect('/home/')
+		return redirect('/')
 
-	return redirect("/home/")	
+	return redirect("/")	
 	
 
 def logout(request):
 	auth_logout(request)
 	# messages.success(request , "Successfully logout Your Account")
-	return redirect('/home/')	
+	return redirect('/')	
 
 
 
