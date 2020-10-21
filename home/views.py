@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login as auth_login , logout as auth_logout , authenticate
 from home.models import SliderContent,AfterSliderContent,PopularProducts,LatestProducts_Content,About_Content_Heading,About_Three_Content,About_Content_Paragraph, About_Content_Top_Down,VideoSection,Location,ContactUs
 from blog.models import Products , Order
+from django.contrib import messages
 
 # from django.contrib import messages
 # from home.models import 
@@ -41,6 +42,10 @@ def blogpost(request , slug):
 	allPost1 = PopularProducts.objects.filter(slug = slug).first()
 	context = {'post':allPost1}
 
+	return render(request , "home/post.html",context)		
+
+
+def finish(request):
 	if request.method == 'POST':
 		name = request.POST['name']
 		email = request.POST['email']
@@ -52,9 +57,8 @@ def blogpost(request , slug):
 
 		order = Order(name = name , email = email , number = number , address = address , product = product , price = price, user=user)
 		order.save()
-
-	return render(request , "home/post.html",context)		
-
+	
+	return render(request ,"home/finish.html")
 
 
 def search(request):

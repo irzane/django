@@ -100,7 +100,7 @@
                         
                     <div class="section-heading">
                         <span>{{post.title}}</span>
-                        <h2>{{post.content | safe | truncatechars:50 }}</h2>
+                        <h2>{{post.content | safe | truncatechars:100 }}</h2>
                     </div>
                     {% endfor %}
                 </div> 
@@ -164,7 +164,7 @@
                         
                     <div class="section-heading">
                         <span>{{post.title}}</span>
-                        <h2>{{post.content | safe | truncatechars:50 }}</h2>
+                        <h2>{{post.content | safe | truncatechars:100 }}</h2>
                     </div>
                     {% endfor %}
 
@@ -230,7 +230,7 @@
     </section>
 
     
-
+<!-- 
     <section id="video-container">
         {% for post in allPost9%}
             
@@ -250,7 +250,7 @@
 
         {% endfor %}
     </section>
-
+ -->
 
 
 
