@@ -1,7 +1,15 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 
+
+
 # Create your models here.
+
+
+class Logo(models.Model):
+	sno = models.AutoField(primary_key = True)
+	logo = models.CharField(max_length = 200)
+
 
 
 class SliderContent(models.Model):

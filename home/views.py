@@ -1,7 +1,7 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login as auth_login , logout as auth_logout , authenticate
-from home.models import SliderContent,AfterSliderContent,PopularProducts,LatestProducts_Content,About_Content_Heading,About_Three_Content,About_Content_Paragraph, About_Content_Top_Down,VideoSection,Location,ContactUs
+from home.models import Logo,SliderContent,AfterSliderContent,PopularProducts,LatestProducts_Content,About_Content_Heading,About_Three_Content,About_Content_Paragraph, About_Content_Top_Down,VideoSection,Location,ContactUs
 from blog.models import Products , Order
 from django.contrib import messages
 
@@ -11,8 +11,8 @@ from django.contrib import messages
 
 # Create your views here.
 
-
 def home(request):
+	# messages.success(request ,"Welcome To Dupolx")
 	allPost1 = SliderContent.objects.all()[::-1]
 	allPost2 = AfterSliderContent.objects.all()[::-1]
 	allPost3 = PopularProducts.objects.all() [::-1]
@@ -24,8 +24,9 @@ def home(request):
 	allPost9 = VideoSection.objects.all()[::-1]
 	allPost10 = Location.objects.all()[::-1]
 	allPost11 = Products.objects.all()[::-2]
+	allPost12 = Logo.objects.all()[::-1]
 	context = {'allPost1':allPost1 , 'allPost2':allPost2 , 'allPost3':allPost3 , 'allPost4':allPost4 , 'allPost5':allPost5
-	, 'allPost6':allPost6 , 'allPost7':allPost7 , 'allPost8':allPost8 , 'allPost9':allPost9, 'allPost10':allPost10, 'allPost11':allPost11}
+	, 'allPost6':allPost6 , 'allPost7':allPost7 , 'allPost8':allPost8 , 'allPost9':allPost9, 'allPost10':allPost10, 'allPost11':allPost11 , 'allPost12':allPost12}
 
 	if request.method == 'POST':
 		name = request.POST['name']
@@ -35,7 +36,7 @@ def home(request):
 		email = request.POST['email']
 		contact = ContactUs(name = name , subject = subject , message = message , number = number , email = email)
 		contact.save()
-
+		messages.success(request ,"Form Successfully Submit")
 	return render(request , "home/index.html" , context)
 
 def blogpost(request , slug):
@@ -87,17 +88,17 @@ def signup(request):
 		pass1 = request.POST['password1']
 		pass2 = request.POST['password2']
 
-		# if len(username) > 10:
-		# 	# messages.error(request , "username Lenth Must Be Less Then 10 Character")
-		# 	return redirect('/home')
+		if len(username) > 10:
+			messages.error(request , "username Lenth Must Be Less Then 8 Character")
+			return redirect('/')
 
 		# if username.isalnum():
-		# 	# messages.error(request , "Username Should Be Character And Number")		
-		# 	return redirect('/home')
+		# 	messages.error(request , "Username Should Be Character And Number")		
+		# 	return redirect('/')
 
-		# if pass1 != pass2:
-		# 	# messages.error(request , 'Password Not Matched ')	
-		# 	return redirect('/home')
+		if pass1 != pass2:
+			messages.error(request , 'Password Not Matched ')	
+			return redirect('/')
 
 
 		myuser = User.objects.create_user(username , email , pass1)
@@ -105,7 +106,7 @@ def signup(request):
 		myuser.last_name = lname
 		myuser.phone_number = number
 		myuser.save()
-		# messages.success(request ,"Successfully Created Your Account")
+		messages.success(request ,"Successfully Created Your Account")
 		return redirect('/')
 
 
@@ -116,18 +117,19 @@ def login(request):
 
 		myuser = authenticate(username = username , password = password)
 		auth_login(request , myuser)
-		# messages.success(request , "Successfully Logged In ")
+		messages.success(request , "Successfully Logged In ")
 		return redirect('/')
-
-	return redirect("/")	
+	messages.success(request , "Plzz Enter Correct User And Password ")	
+	return redirect("/")
 	
 
 def logout(request):
 	auth_logout(request)
-	# messages.success(request , "Successfully logout Your Account")
+	messages.success(request , "Successfully logout Your Account")
 	return redirect('/')	
 
 
 
 
 
+ 

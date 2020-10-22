@@ -2,6 +2,10 @@
 <html lang="en">
 
   <head>
+    {% block head %}
+        
+    {% endblock head %}
+     
     <title>{% block title %}
         
     {% endblock title %}</title>
@@ -39,9 +43,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button id="primary-nav-button" type="button">Menu</button>
+                        {% for post in allPost12 %}
                         <a href="/"><div class="logo">
-                            <img src="{% static 'img/logo.png' %}" alt="Dupolx Logo">
+                            <img src="{{post.logo}}" alt="Dupolx Logo" width="220" height="99">
                         </div></a>
+                        {% endfor %}
+
                         <nav id="primary-nav" class="dropdown cf">
                             <ul class="dropdown menu">
                                 <li class='{% block homeactive %}
@@ -59,7 +66,8 @@
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      Welcome <strong>{{request.user}}</strong>
+                                      Welcome: <strong>{{request.user}}</strong>
+
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                       <a class="dropdown-item" href="/logout/">Logout {{request.user}}</a>
@@ -167,14 +175,35 @@
       </div>
     </div>
   </div>
+<hr>
+{% for message in messages %}
 
-
+<div class="container mt-5">
+<div class="alert alert-{{message.tags}}" role="alert">
+  <strong>Message :</strong> <a href="#" class="alert-link"> {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+</div>
+{% endfor %}
 
 
       
 {% block body %}
     
 {% endblock body %}
+
+
+
+<!-- <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>Message :</strong> {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div> -->
+  
+
     
 
 
@@ -252,6 +281,8 @@
     <script src="{% static 'js/datepicker.js' %}"></script>
     <script src="{% static 'js/plugins.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+
+   
 
 </body>
 </html>    
