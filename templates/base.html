@@ -43,11 +43,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <button id="primary-nav-button" type="button">Menu</button>
-                        {% for post in allPost12 %}
                         <a href="/"><div class="logo">
-                            <img src="{{post.logo}}" alt="Dupolx Logo" width="220" height="99">
+                            <img src="{% static 'img/logo.png' %}" alt="Dupolx Logo" width="220" height="99">
                         </div></a>
-                        {% endfor %}
+                      
 
                         <nav id="primary-nav" class="dropdown cf">
                             <ul class="dropdown menu">
