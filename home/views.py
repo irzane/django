@@ -116,11 +116,15 @@ def login(request):
 		password = request.POST['lpassword']
 
 		myuser = authenticate(username = username , password = password)
-		auth_login(request , myuser)
-		messages.success(request , "Successfully Logged In ")
-		return redirect('/')
-	messages.success(request , "Plzz Enter Correct User And Password ")	
-	return redirect("/")
+		if myuser is not None:
+			auth_login(request , myuser)
+			messages.success(request , "Successfully Logged In ")
+			return redirect('/')
+		else:
+			messages.error(request , "Plzz Enter Correct User ID And Password ")	
+			return redirect("/")
+	else:
+		return render(request , "home/index.html")		
 	
 
 def logout(request):
