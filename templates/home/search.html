@@ -6,10 +6,10 @@
     
 {% endblock blogactive %}
 
-{% block Description %}Dupolx is an international Products Company based in India, that offers To Buy Products, services. Contact ...{% endblock Description %}
+{% block Description %}Dupolx est une société internationale de produits basée au Maroc, qui propose des services d'achat de produits. Contact ...{{% endblock Description %}
 
 
-{% block Keywords %}Dupolx,Products Buy , Products, Etc..{% endblock Keywords %}
+{% block Keywords %}Dupolx, Produits, Acheter, Produits, Etc..{% endblock Keywords %}
 
 {% block body %}
 
@@ -22,8 +22,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-heading">
-                        <span>Search Results</span>
-                        <h2>Your Search Is :</h2>
+                        <span>Rechercher les résultats</span>
+                        <h2>Votre recherche est :</h2>
                     </div>
                 </div> 
             </div> 
@@ -52,13 +52,13 @@
                         </div>
                         <div class="down-content">
                             <h4>{{post.title}}</h4>
-                            <span>Indian Rupees - {{post.price}}</span>
+                            <span>Dirham- {{post.price}}</span>
                             <p>{{post.content | safe | truncatechars:70}}</p>
                             
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="text-button">
-                                        <a href="blog/{{post.slug}}">Continue Shopping</a>
+                                        <a href="blog/{{post.slug}}">Continuez votre shopping</a>
                                     </div>
                                 </div>
                             </div>
