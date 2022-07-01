@@ -1,1 +1,1 @@
-web: gunicorn dupolx.wsgi
+web: gunicorn dupolx.wsgi=
