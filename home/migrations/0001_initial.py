@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
     dependencies = [
     ]
 
-    operations = [
+    operations = [ 
         migrations.CreateModel(
             name='SliderContent',
             fields=[
