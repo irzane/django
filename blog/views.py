@@ -5,7 +5,7 @@ from django.contrib import messages
 # Create your views here.
 
 def blog(request):
-	allPost1 = Products.objects.all()[::-1]
+	allPost1 = Products.objects.all()[::-1] 
 	context = {'allPost1':allPost1}
 	return render(request , "blog/blog.html",context)
 
