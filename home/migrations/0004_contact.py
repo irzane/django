@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('home', '0003_auto_20201019_1544'),
-    ]
+    ] 
 
     operations = [
         migrations.CreateModel(
