@@ -29,3 +29,4 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('home/', include('home.urls')),
 ] 
+ 
