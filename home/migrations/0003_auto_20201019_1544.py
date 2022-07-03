@@ -4,7 +4,7 @@ import ckeditor.fields
 from django.db import migrations, models
 
 
-class Migration(migrations.Migration):
+class Migration(migrations.Migration): 
 
     dependencies = [
         ('home', '0002_auto_20201019_1421'),
