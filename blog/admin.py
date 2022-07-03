@@ -4,4 +4,4 @@ from blog.models import Products,Order
 # Register your models here.
 
 
-admin.site.register((Products,Order))
+admin.site.register((Products,Order)) 
